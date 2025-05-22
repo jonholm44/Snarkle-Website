@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Snarkle - The Cosmic Narwhal Meme Coin</title>
+  <meta name="description" content="Snarkle is a community-driven meme coin featuring a cosmic narwhal mascot. Built with deflationary tokenomics and play-to-earn gaming integration on Binance Smart Chain.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Press+Start+2P&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --space-dark: hsl(230, 75%, 9%);
+      --space-blue: hsl(221, 60%, 16%);
+      --cosmic-purple: hsl(256, 65%, 25%);
+      --neon-cyan: hsl(189, 100%, 50%);
+      --cosmic-gold: hsl(51, 100%, 50%);
+      --cosmic-orange: hsl(18, 94%, 60%);
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: radial-gradient(ellipse at center, var(--space-blue) 0%, var(--space-dark) 50%, #000000 100%);
+      color: white;
+      overflow-x: hidden;
+    }
+
+    .font-orbitron { font-family: 'Orbitron', sans-serif; }
+    .font-pixel { font-family: 'Press Start 2P', cursive; }
+
+    /* Navigation */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 50;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 1rem 0;
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .logo img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 2px solid var(--neon-cyan);
+      box-shadow: 0 0 10px var(--neon-cyan);
+    }
+
+    .logo span {
+      font-family: 'Orbitron', sans-serif;
+      font-weight: bold;
+      font-size: 1.25rem;
+      color: var(--neon-cyan);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--neon-cyan);
+    }
+
+    /* Particles */
+    .particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .particle {
+      position: absolute;
+      background: var(--neon-cyan);
+      border-radius: 50%;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+    }
+
+    /* Hero Section */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      z-index: 10;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .hero-logo {
+      width: 256px;
+      height: 256px;
+      margin: 0 auto 2rem;
+      border-radius: 50%;
+      border: 6px solid var(--neon-cyan);
+      box-shadow: 0 0 30px var(--neon-cyan);
+      animation: pulse-glow 2s ease-in-out infinite alternate, float 6s ease-in-out infinite;
+    }
+
+    @keyframes pulse-glow {
+      0% { box-shadow: 0 0 20px var(--neon-cyan); }
+      100% { box-shadow: 0 0 40px var(--neon-cyan), 0 0 60px var(--neon-cyan); }
+    }
+
+    .hero h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 900;
+      font-size: 4rem;
+      margin-bottom: 1rem;
+      background: linear-gradient(45deg, var(--neon-cyan), var(--cosmic-gold));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero h2 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2rem;
+      color: var(--neon-cyan);
+      margin-bottom: 2rem;
+    }
+
+    .hero p {
+      font-size: 1.25rem;
+      max-width: 600px;
+      margin: 0 auto 2rem;
+      color: #ccc;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      align-items: center;
+      margin-bottom: 3rem;
+    }
+
+    .btn-primary {
+      font-family: 'Press Start 2P', cursive;
+      background: var(--neon-cyan);
+      color: black;
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn-primary:hover {
+      background: white;
+      transform: scale(1.05);
+      box-shadow: 0 0 30px var(--neon-cyan);
+    }
+
+    .btn-secondary {
+      font-family: 'Orbitron', sans-serif;
+      background: transparent;
+      color: var(--neon-cyan);
+      padding: 1rem 2rem;
+      border: 2px solid var(--neon-cyan);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn-secondary:hover {
+      background: var(--neon-cyan);
+      color: black;
+    }
+
+    /* Stats */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 1.5rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .stat-card {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 12px;
+      padding: 1.5rem;
+      text-align: center;
+    }
+
+    .stat-value {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-label {
+      color: #ccc;
+      font-size: 0.875rem;
+    }
+
+    /* Sections */
+    .section {
+      padding: 5rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section h2 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 3rem;
+      text-align: center;
+      margin-bottom: 2rem;
+      color: var(--neon-cyan);
+    }
+
+    .section p {
+      text-align: center;
+      font-size: 1.25rem;
+      color: #ccc;
+      margin-bottom: 3rem;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Features Grid */
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+
+    .feature-card {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 12px;
+      padding: 2rem;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 30px var(--neon-cyan);
+    }
+
+    .feature-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    .feature-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.25rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--space-dark);
+      padding: 3rem 2rem;
+      border-top: 1px solid rgba(0, 247, 255, 0.2);
+      text-align: center;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .social-links a {
+      color: #ccc;
+      font-size: 1.5rem;
+      transition: color 0.3s;
+    }
+
+    .social-links a:hover {
+      color: var(--neon-cyan);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hero h1 { font-size: 2.5rem; }
+      .hero h2 { font-size: 1.5rem; }
+      .hero-buttons { flex-direction: column; }
+      .section h2 { font-size: 2rem; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Particles Background -->
+  <div class="particles" id="particles"></div>
+
+  <!-- Navigation -->
+  <nav>
+    <div class="nav-container">
+      <div class="logo">
+        <img src="./snarkle_logo_256x256.png" alt="Snarkle Logo">
+        <span>SNARKLE</span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#tokenomics">Tokenomics</a></li>
+        <li><a href="#community">Community</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div>
+      <img src="./snarkle_logo_256x256.png" alt="Snarkle Cosmic Narwhal" class="hero-logo">
+      
+      <h1>🐳 SNARKLE</h1>
+      <h2>The Cosmic Narwhal Meme Coin</h2>
+      
+      <p>
+        Born from the memes. Fueled by the people. Ready for launch. 
+        Snarkle isn't just a coin — it's a movement to the stars.
+      </p>
+      
+      <div class="hero-buttons">
+        <a href="#" class="btn-primary" onclick="alert('Snarkle token launch coming soon! Follow our social media for launch announcements.')">
+          🚀 Launch Coming Soon
+        </a>
+        <a href="#" class="btn-secondary">📄 Whitepaper</a>
+      </div>
+      
+      <!-- Live Stats -->
+      <div class="stats">
+        <div class="stat-card">
+          <div class="stat-value" style="color: var(--neon-cyan)">Coming Soon</div>
+          <div class="stat-label">Price</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value" style="color: var(--cosmic-gold)">TBA</div>
+          <div class="stat-label">Market Cap</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value" style="color: var(--cosmic-orange)">0</div>
+          <div class="stat-label">Holders</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value" style="color: #4ade80">Pre-Launch</div>
+          <div class="stat-label">24h Change</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tokenomics Section -->
+  <section id="tokenomics" class="section">
+    <h2>⚔️ Tokenomics</h2>
+    <p>Deflationary mechanics meet cosmic rewards. Every transaction powers the Snarkle ecosystem.</p>
+    
+    <div class="features">
+      <div class="feature-card">
+        <div class="feature-icon">🔥</div>
+        <h3 class="feature-title" style="color: var(--neon-cyan)">Deflationary Supply</h3>
+        <p>2% of every transaction burned forever</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">💸</div>
+        <h3 class="feature-title" style="color: var(--cosmic-gold)">3% Trade Rewards</h3>
+        <p>Holders earn passive income from trading</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🧠</div>
+        <h3 class="feature-title" style="color: var(--cosmic-orange)">Meme Power</h3>
+        <p>Level: OVER 9000! Community-driven growth</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Community Section -->
+  <section id="community" class="section" style="background: linear-gradient(135deg, var(--cosmic-purple) 0%, var(--space-blue) 50%, var(--space-dark) 100%);">
+    <h2>🌊 Join the Tidal Wave</h2>
+    <p>Snarkle is here to wreck dull coins and launch a tsunami of hype. Become a part of the Snarkle Legion today.</p>
+    
+    <div style="text-align: center; margin-top: 3rem;">
+      <h3 style="font-family: 'Orbitron', sans-serif; color: var(--neon-cyan); margin-bottom: 2rem;">
+        🚀 Stay Updated with Snarkle News
+      </h3>
+      <p style="margin-bottom: 2rem; color: #ccc;">
+        Get the latest updates, exclusive events, and cosmic announcements directly to your inbox.
+      </p>
+      
+      <div style="max-width: 500px; margin: 0 auto;">
+        <form onsubmit="handleNewsletterSubmit(event)" style="display: flex; gap: 1rem; flex-direction: column;">
+          <input 
+            type="email" 
+            placeholder="Enter your cosmic email address" 
+            style="padding: 1rem; background: var(--space-dark); border: 2px solid var(--neon-cyan); border-radius: 8px; color: white; flex: 1;"
+            required
+            id="emailInput"
+          />
+          <button type="submit" class="btn-primary">Subscribe</button>
+        </form>
+        
+        <p style="font-size: 0.75rem; color: #999; margin-top: 1rem;">
+          No spam, only cosmic vibes. Unsubscribe anytime.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="social-links">
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-telegram"></i></a>
+        <a href="#"><i class="fab fa-discord"></i></a>
+        <a href="#"><i class="fab fa-reddit"></i></a>
+      </div>
+      
+      <p style="color: #ccc; margin-bottom: 1rem;">
+        &copy; 2025 Snarkle Meme Coin. Built for chaos. Designed for glory.
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    // Create particles
+    function createParticles() {
+      const particlesContainer = document.getElementById('particles');
+      const particleCount = 50;
+      
+      for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        particle.style.left = Math.random() * 100 + '%';
+        particle.style.top = Math.random() * 100 + '%';
+        particle.style.width = Math.random() * 3 + 1 + 'px';
+        particle.style.height = particle.style.width;
+        particle.style.animationDelay = Math.random() * 6 + 's';
+        particle.style.animationDuration = (Math.random() * 4 + 2) + 's';
+        particlesContainer.appendChild(particle);
+      }
+    }
+
+    // Smooth scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Newsletter form
+    function handleNewsletterSubmit(e) {
+      e.preventDefault();
+      const email = document.getElementById('emailInput').value;
+      alert(`Thanks for your interest! Please email us at hello@snarkle.space with "${email}" to join our mailing list.`);
+      document.getElementById('emailInput').value = '';
+    }
+
+    // Initialize
+    createParticles();
+  </script>
+</body>
+</html>
